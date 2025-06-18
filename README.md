@@ -77,6 +77,40 @@ The city that the scholar Petrarch described as ‘La Superba’ has plenty to o
 
 <!-- mauw: timeout.com/london/travel/ten-great-things-to-do-in-genoa -->
 
-## About
+* * *
 
-x
+
+## InstantWebapp – rethinking web-design itself
+
+### Template System
+
+[InstantWebapp](https://www.instantwebapp.com/) is Scott Phillips' flagship product. It is a template system  <!--started 15 years agi-->  based on the principles of `Human Interaction Design`. It's poised for a redesign.
+
+#### Patterns for the agentic web
+
+> Let's be real, Wordpress, Shopify and content federation systems are based on poorly constructed meta data and bloated images – AI simply can not deal with it
+
+Content federation systems (such as [Hygraph](https://hygraph.com/), have basicially failed. Let's use this as an opportunity to update common `Human Interaction Design` patterns for the web.
+
+<!-- or other GraphQL/database layers), could be turned to better serve AI. -->
+
+In the past Designers and Developers would refer to different kinds of people as "users", but this is about to change... because there's a new user, and given the right conditions, they are _THE_ Power User!
+
+## Power Users Unite
+
+Two different kinds of Power User:
+
+When I use `Perplexity`, `Claude 4` or `Gemini 2.5 Pro` to help build sophisticated software such as Python automations, webapps and games I have to _make the problem addressable_. That means I need to help myself break tasks into small workable chunks to help me understand the core of the problem.
+
+What am I doing with AI at the moment, and what _exactly_ do I mean by sophisticated software?
+
+- I am an application level developer. That means I need to use `Python` to write useful automations, computer vision projects (with `OpenCV`), and help structure `API` to consume unstructured data for web-server applications for business like **National Geographic**, or structured data for on-device use such as for **The WHO**.
+- [Medixplore.app](https://medixplore.app), I have developed a system using `InstantWebapp` templates to generate hundreds of apps for the medical services industry. There's more – a new business is emerging with `Stem Cell Technology` providers, they too can tailor their services to individual clients using this platform.
+- I write conditional logic all day long for webapps and other code that runs in the browser and on-device, such as [MixedRealityGam.es](https://MixedRealityGam.es) using `Embedded Intelligence`, such as `WebAI` and graphics like `ThreeJS`.
+
+To work on problems like these I have to understand how to
+_make the problem addressable_, I am a Power User.
+
+> Power Users need to unite to empower AI to get even more done.
+
+<!-- end manifest -->
