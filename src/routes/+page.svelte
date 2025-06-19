@@ -1,266 +1,158 @@
-
-<!-- ,
-    { name: 'Genoa Arts', url: 'http://zacusca-backend.bnqt.autos/feed/465fc560-f48a-4344-87e0-e6d8af54550a/rss' },
-    { name: 'Genoa Everything', url: 'http://zacusca-backend.bnqt.autos/feed/22a6979e-c0ef-44f6-aac9-5a07f7bb6810/rss' },
-    { name: 'Genoa History', url: 'http://zacusca-backend.bnqt.autos/feed/b0fc628e-07b4-4321-bd0e-f9c77d7a6d38/rss' },
-    { name: 'Genoa Events', url: 'http://zacusca-backend.bnqt.autos/feed/eceb8d8e-d7a0-462f-bd03-c48592270ec1/rss' },
-    { name: 'Genoa Food', url: 'http://zacusca-backend.bnqt.autos/feed/7c2a6615-d957-49b3-8fbd-d636259a56d1/rss' },
-    { name: 'Genoa Non-Tourist', url: 'http://zacusca-backend.bnqt.autos/feed/eaef6560-b52f-4235-bf32-ae3cbe7062db/rss' },
-    { name: 'Genoa Activities', url: 'http://zacusca-backend.bnqt.autos/feed/803fe4b3-c6f9-4e10-aec9-974c082d855d/rss' },
-  // bike news
-    { name: 'TrainerRoad', url: 'https://www.trainerroad.com/blog/feed' },
-    { name: 'CyclingNews', url: 'https://www.cyclingnews.com/rss/all/' },
-    { name: 'CyclingWeekly', url: 'https://www.cyclingweekly.com/feeds/tag/news' },
-    { name: 'Bike Snob NYC', url: 'https://bikesnobnyc.com/feed' },
-    { name: 'PezCycling News', url: 'https://feeds.feedburner.com/Pezcyclingnews' },
-    { name: 'The Inner Ring', url: 'https://feeds.feedburner.com/inrng/i' },
-    { name: 'Bike Hugger', url: 'https://bikehugger.com/feed' },
-    { name: 'Seattle Bike Blog', url: 'https://seattlebikeblog.com/feed' },
-    { name: 'BikeRadar (News)', url: 'https://www.bikeradar.com/news/rss/' },
-    { name: 'BikeRadar (Road)', url: 'https://www.bikeradar.com/road/rss/' },
-    { name: 'BikeRadar (MTB)', url: 'https://www.bikeradar.com/mtb/rss/' },
-    { name: 'BikeRadar (Gravel)', url: 'https://www.bikeradar.com/gravel/rss/' },
-    { name: 'Bike EU', url: 'https://www.bike-eu.com/rss' },
-    { name: 'VeloWire', url: 'https://www.velowire.com/rss.php?l=en' },
-    { name: 'Pinkbike', url: 'https://www.pinkbike.com/rss' }, -->
 <script>
-// ./page.svelte
-let items = $state([]);
-let isLoading = $state(true);
-
-// --- 1. The expanded list of feed sources ---
-// The new feeds have been added with a descriptive name for each.
-const feedSources = [
+  // +page.svelte
+  import { createContext } from './simpleContext.svelte.js';
+  import Search from './Search.svelte';
+  import { getRssItems } from './rssfeed.js';
   
-  { name: 'Scott Phillips\' Substack', url: 'https://inspiredlabs.substack.com/feed' },
-  { name: 'Genoa Arts', url: 'http://zacusca-backend.bnqt.autos/feed/465fc560-f48a-4344-87e0-e6d8af54550a/rss' },
-  { name: 'Genoa Arts', url: 'http://zacusca-backend.bnqt.autos/feed/465fc560-f48a-4344-87e0-e6d8af54550a/rss' },
-    { name: 'Genoa Everything', url: 'http://zacusca-backend.bnqt.autos/feed/22a6979e-c0ef-44f6-aac9-5a07f7bb6810/rss' },
-    { name: 'Genoa History', url: 'http://zacusca-backend.bnqt.autos/feed/b0fc628e-07b4-4321-bd0e-f9c77d7a6d38/rss' },
-    { name: 'Genoa Events', url: 'http://zacusca-backend.bnqt.autos/feed/eceb8d8e-d7a0-462f-bd03-c48592270ec1/rss' },
-    { name: 'Genoa Food', url: 'http://zacusca-backend.bnqt.autos/feed/7c2a6615-d957-49b3-8fbd-d636259a56d1/rss' },
-    { name: 'Genoa Non-Tourist', url: 'http://zacusca-backend.bnqt.autos/feed/eaef6560-b52f-4235-bf32-ae3cbe7062db/rss' },
-    { name: 'Genoa Activities', url: 'http://zacusca-backend.bnqt.autos/feed/803fe4b3-c6f9-4e10-aec9-974c082d855d/rss' },
-  /* bike news  */
-    { name: 'TrainerRoad', url: 'https://www.trainerroad.com/blog/feed' },
-    { name: 'CyclingNews', url: 'https://www.cyclingnews.com/rss/all/' },
-    { name: 'CyclingWeekly', url: 'https://www.cyclingweekly.com/feeds/tag/news' },
-    { name: 'Bike Snob NYC', url: 'https://bikesnobnyc.com/feed' },
-    { name: 'PezCycling News', url: 'https://feeds.feedburner.com/Pezcyclingnews' },
-    { name: 'The Inner Ring', url: 'https://feeds.feedburner.com/inrng/i' },
-    { name: 'Bike Hugger', url: 'https://bikehugger.com/feed' },
-    { name: 'Seattle Bike Blog', url: 'https://seattlebikeblog.com/feed' },
-    { name: 'BikeRadar (News)', url: 'https://www.bikeradar.com/news/rss/' },
-    { name: 'BikeRadar (Road)', url: 'https://www.bikeradar.com/road/rss/' },
-    { name: 'BikeRadar (MTB)', url: 'https://www.bikeradar.com/mtb/rss/' },
-    { name: 'BikeRadar (Gravel)', url: 'https://www.bikeradar.com/gravel/rss/' },
-    { name: 'Bike EU', url: 'https://www.bike-eu.com/rss' },
-    { name: 'VeloWire', url: 'https://www.velowire.com/rss.php?l=en' },
-    { name: 'Pinkbike', url: 'https://www.pinkbike.com/rss' }
-];
-
-// --- 2. Expanded color palette for more variety ---
-const feedColors = [
-  '#00aaff', '#ff4e50', '#00d2d3', '#ff9f43', '#5f27cd', '#22a6b3',
-  '#e056fd', '#686de0', '#30336b', '#95afc0', '#eb4d4b', '#badc58',
-  '#f0932b', '#be2edd', '#130f40'
-];
-
-
-$effect.pre(async () => {
-  isLoading = true;
-  try {
-    const allFeeds = await Promise.all(
-      feedSources.map(async (feed, index) => {
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`;
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-
-        if (data.status === 'ok' && Array.isArray(data.items)) {
-          // The logic remains the same: tag each item with its origin info.
-          return data.items.map(item => ({
-            ...item,
-            feedName: feed.name,
-            feedColor: feedColors[index % feedColors.length] // Cycle through colors
-          }));
-        }
-        return [];
-      })
-    );
-
-    const flattenedItems = allFeeds.flat();
-    flattenedItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+  // --- State Management for asynchronous data ---
+  let items = $state([]);
+  let filteredItems = $state([]); // Use a separate state for filtered items
+  let isLoading = $state(true);
+  let searchInput = $state('');
     
-    items = flattenedItems;
-
-  } catch (error) {
-    console.error('Failed to fetch or parse RSS feeds:', error);
-    items = [];
-  } finally {
-    isLoading = false;
-  }
-});
-</script>
-
-<!--`items` are WORKING: <pre>{JSON.stringify(items, null, 2)}</pre>-->
-
-<main>
-  <heading>
-    <h1>BikeFever.tech</h1>
-    <!-- <h2>RSS Feed Aggregator</h2> -->
-    <h2>Sans embedded intelligence (<code>#webAI</code>)</h2>
-  </heading>
+  // --- Preserve Context ---
+  // Note: We will filter on the local 'items' state, not context.getItems(),
+  // to more easily handle the asynchronous data loading.
+  const context = createContext(items);
   
-<section>
-{#if isLoading}
-  <p>Loading feeds, please wait...</p>
-{:else}
-  <ul>
-    {#each items as item, index}
-      <li>
-        <a
-          href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          style="color: {item.feedColor};"
-        >
-          {@html item.title}
-        </a>
-        <p>{@html item.description}</p>
-        <small>
-          From <span class="feed-source" style="color: {item.feedColor};">{item.feedName}</span>
-          on {new Date(item.pubDate).toLocaleString()}
-        </small>
-      </li>
-    {/each}
-  </ul>
-  {#if items.length === 0}
-    <p>Could not load any feed items. Please check the browser console for errors.</p>
+  // Use an effect to fetch data and initialize both item lists
+  $effect(async () => {
+    isLoading = true;
+    const fetchedItems = await getRssItems();
+    items = fetchedItems;
+    filteredItems = fetchedItems; // Initially, filtered list is the full list
+    isLoading = false;
+  });
+  
+  // Sync with context's searchInput reactively
+  $effect(() => {
+    searchInput = context.getSearchInput();
+  });
+  
+  // --- Derive filtered items reactively based on searchInput ---
+  $effect(() => {
+    const query = searchInput.toLowerCase();
+  
+    // If the search query is empty, show all items.
+    if (!query) {
+      filteredItems = items;
+      return;
+    }
+  
+    // Filter based on multiple fields, checking for their existence first.
+    filteredItems = items.filter(item => {
+      const title = item.title?.toLowerCase() || '';
+      const description = item.description?.toLowerCase() || '';
+      const content = item.content?.toLowerCase() || '';
+      const feedName = item.feedName?.toLowerCase() || '';
+      const author = item.author?.toLowerCase() || '';
+  
+      return title.includes(query) ||
+             description.includes(query) ||
+             content.includes(query) ||
+             feedName.includes(query) ||
+             author.includes(query);
+    });
+  });
+  </script>
+  <main class="flex flex-column justify-around ma0">
+  <div class="bg-gray sticky z-2 w-100">
+    <section class="flex measure-wide ml-auto mr-auto pa3">
+      <img src="./images/logo.webp" class="w-25" alt="Bike Fever" />
+      <Search />
+    </section>	
+  </div>	
+  
+  <!-- `items` are WORKING: <pre>{JSON.stringify(items, null, 2)}</pre> -->
+  
+  <section class="z-1 relative ml-auto mr-auto">
+  {#if isLoading}
+    <p>Loading feeds, please wait...</p>
+  {:else}
+    <ul class="list pl0 measure-wide">
+      <!-- Now loop over `filteredItems` and display results -->
+      {#each filteredItems as {
+        title, link, author,
+        pubDate, description,
+        content, feedName, feedColor
+      }}
+        <li class="pa3 br4 mb3 bg-white overflow-hidden" >
+          <a href="{link}" class="link" style="color: #383838">
+            <h2 class="dark-gray">{@html title}</h2>
+            <h3 class="gray">{@html description}</h3>
+            <!--p>{@html content}</p-->
+          </a>
+          <small class="b">
+            <cite style="color: {feedColor}">{@html feedName}<!--span style="display: {author ? 'inline-block' : 'none'}">: {@html author}</span--></cite>
+            <date>{new Date(pubDate).toLocaleString()}</date>	
+          </small>
+        </li>
+      {:else}
+        <!-- Show a message if the filter returns no results -->
+        <li>No items match your search.</li>
+      {/each}
+    </ul>
   {/if}
-{/if}
-</section>
-</main>
+  </section>
+  </main>
   
 <style>
-
-main { width: 100% }
-
-section {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  margin: 0 auto;
+.w-25 { width: 25% }
+.ml-auto { margin-left: auto }
+.mr-auto { margin-right: auto }	
+.sticky {	
+  position: sticky;
+  top: 0;
 }
-
-heading {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  margin: 0 auto;
+.bg-gray { background-color: #777 }	
+.z-1 {z-index: 1}
+.z-2 {z-index: 2}	
+.relative { position: relative }
+.list { list-style-type: none }
+.pl0 { padding-left: 0 }
+.pa3 { padding: 1rem }
+.br4 { border-radius: 1rem }
+.mb3 { margin-bottom: 1rem }
+.bg-white { background-color: #fff }
+.overflow-hidden { overflow: hidden }
+.link { text-decoration: none }
+.link,
+.link:active,
+.link:focus,
+.link:hover,
+.link:link,
+.link:visited {
+  transition: color 0.15s ease-in;
 }
-
-@media screen and (min-width: 30em) {
-  section {
-    width: 88%;
-  }
-  heading {
-    width: 88%;
-  }
+.link:focus {
+  outline: 1px dotted currentColor;
 }
-
-@media screen and (min-width: 30em) and (max-width: 60em) {
-  section {
-    width: 66%;
-  }
-  heading {
-    width: 66%;
-  }
+.list {
+  list-style-type: none;
 }
-
-@media screen and (min-width: 60em) {
-  section {
-    width: 33%;
-  }
-  heading {
-    width: 33%;
-  }
-}
-
+.w-100  { width: 100% }
+.measure-wide { max-width: 34em }
+.flex { display: flex }
+.flex-column { flex-direction: column }
+.justify-around { justify-content: space-around }	
+.dark-gray { color: #333 }
+.gray { color: #777 }
+.b { font-weight: bold }
+  
 :global(body) {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
     'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #f8f8f8;
+  margin: 0;
 }
 
-
-input[type='search'] {
-  display: block;
-  width: 100%;
-  padding: 0.75em;
-  border-radius: 8px;
-  border: 1px solid #555;
-  box-sizing: border-box;
-}
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  border-radius: 8px;
-  margin-bottom: 1.5em;
-  background-color: white;
+:global( .sr-only:not(:focus):not(:active) ) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
   overflow: hidden;
-}
-a {
-  font-weight: bold;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-p {
-  margin: 0.5em 0;
-}
-small {
-  color: #888;
-  display: block;
-  margin-top: 1em;
-}
-
-/***** EXTRA *****/
-
-h1 {
-  color: #111;
-}
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  border: 1px solid #eee;
-  padding: 1.5em;
-  margin-bottom: 1.5em;
-  border-radius: 8px;
-}
-a {
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.25rem;
-}
-a:hover {
-  text-decoration: underline;
-}
-p {
-  margin: 0.5em 0 1em 0;
-  line-height: 1.6;
-  color: #555;
-}
-small {
-  color: #999;
-}
-.feed-source {
-  font-weight: bold;
-  font-style: italic;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 </style>
-  
