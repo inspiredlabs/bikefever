@@ -1,0 +1,76 @@
+# Versione aggiornata della scheda #2 con i link Google Maps dei castelli
+yaml_castelletto_final = """DTO:
+  url: /genova/castelletto-surroundings
+  title: Around Castelletto – Fortress, Castles & Gelato
+  excerpt: >
+    Explore Castelletto's hidden layers: from a demolished Austro-Hungarian fortress to majestic castles,
+    a peaceful herb pharmacy, and refreshing gelato under century-old trees.
+  author: Luca / Bike Fever
+  datetime: auto
+  coords:
+    lat: 44.41732
+    lon: 8.93593
+  map_url: "https://maps.app.goo.gl/q6HYM82o3f9T4KyDA"
+  best_time: "Late afternoon to sunset (March–October)"
+  tags:
+    - history
+    - view
+    - mobility-tip
+    - herbs
+    - local-business
+    - gelato
+    - sunset
+    - castles
+    - funicular
+    - elevator
+  details:
+    history:
+      - "Castelletto’s name originated from an Austro-Hungarian fortress once dominating the city; demolished during a 1530 revolt led by wealthy Genoese families, its stones were reused to build today's elegant belvedere buildings."
+    mobility:
+      - "Ascensore Castelletto Ponente: from Piazza della Meridiana, ideal to transport bikes."
+      - "Ascensore Castelletto Levante: Liberty-style living gem; its top offers one of Genoa’s finest panoramas—on clear mornings you can even see Corsica."
+      - "Funicolare Zecca–Righi: from Largo Zecca, stops include San Nicola (Salita Madonnetta) and Montegalletto (Castelli area)."
+    points_of_interest:
+      - name: "Castello Mackenzie"
+        description: >
+          Neo-Gothic “fairy‑tale” castle by Gino Coppedè (1893–1905), on 16th-century walls. Once private, now used for exhibitions and cultural events. 85 rooms, 4,000 m².
+        coords:
+          lat: 44.41820
+          lon: 8.93800
+        map_url: "https://maps.app.goo.gl/Wm7Q6QEMFUzAt9S99"
+      - name: "Castello D’Albertis"
+        description: >
+          Gothic Revival castle (1886–1892) by Alfredo d'Andrade for Captain Enrico Alberto d’Albertis.
+          Built on medieval bastion, now home to the Museum of World Cultures, with panoramic terraces.
+        coords:
+          lat: 44.41872
+          lon: 8.92486
+        map_url: "https://maps.app.goo.gl/9UHdqxMD5yNsKyBc7"
+      - name: "Castello Bruzzo"
+        description: >
+          Built in 1904 by Gino Coppedè, mirroring Mackenzie’s neo-Gothic style.
+          Villa with tower and romantic park, decorated with painted loggias and merlons.
+        coords:
+          lat: 44.41685
+          lon: 8.93650
+        map_url: "https://maps.app.goo.gl/tqKqbwEPDoxcWkNv9"
+      - name: "Church of Sant’Anna & Monastic Pharmacy"
+        description: >
+          Baroque sanctuary with friars' herbal pharmacy. Shaded square ideal at sunset.
+        coords:
+          lat: 44.41609
+          lon: 8.94044
+        map_url: "https://maps.app.goo.gl/CqWxkaFs26e6DJEt7"
+      - name: "Gelateria San Nicola"
+        description: >
+          Family-owned gelato shop with creative flavors and alcoholic Mojito granita.
+          Enjoy it in the park across the street — a summertime must.
+        coords:
+          lat: 44.41904
+          lon: 8.93174
+        map_url: "https://maps.app.goo.gl/3Uoc7HfXEvqCy7GAA"
+"""
+
+# Salvataggio file finale aggiornato
+file_path = Path("/mnt/data/castelletto-surroundings-final.yaml")
+file_path.write_text(yaml_castelletto_final, encoding="utf-8")
