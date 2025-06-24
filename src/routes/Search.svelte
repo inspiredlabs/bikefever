@@ -50,6 +50,7 @@ function clearSearch(event) {
   <label for="search" class="sr-only">Search</label>
   <div class="flex items-center">
     <input
+
       bind:this={search}
       type="search"
       {placeholder}
