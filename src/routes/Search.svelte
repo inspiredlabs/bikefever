@@ -58,7 +58,7 @@ function clearSearch(event) {
       aria-describedby="search"
       value={context.getSearchInput()}
       oninput={handleChange}
-      class="highlight zed"
+      class="highlight"
     />
     <button
       onclick={ clearSearch }
