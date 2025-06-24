@@ -1,8 +1,8 @@
 [
-	{
-		"name": "Scott Phillips Substack",
-		"url": "https://inspiredlabs.substack.com/feed"
-	},
+	{ 
+		"name": "Bike Fever's Substack",
+		"url": "https://bikefeverstories.substack.com/feed"
+	},	
 	{ "name": "Genoa Arts", "url": "http://zacusca-backend.bnqt.autos/feed/465fc560-f48a-4344-87e0-e6d8af54550a/rss" },
 	{ "name": "Genoa Food", "url": "http://zacusca-backend.bnqt.autos/feed/7c2a6615-d957-49b3-8fbd-d636259a56d1/rss" },
 	{ "name": "Genoa Arts", "url": "http://zacusca-backend.bnqt.autos/feed/465fc560-f48a-4344-87e0-e6d8af54550a/rss" },

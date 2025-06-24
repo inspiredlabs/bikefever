@@ -4,6 +4,18 @@
  * @returns {Promise<Array<Object>>} A promise that resolves to an array of feed items.
  */
 import sources from './sources.json';
+/* TYPICALLY:
+[
+	{
+		"name": "Scott Phillips Substack",
+		"url": "https://inspiredlabs.substack.com/feed"
+	},
+	{
+		"name": "",
+		"url": ""
+	}
+]
+*/
 
 export async function getRssItems() {
   // --- 1. The expanded list of feed sources ---
