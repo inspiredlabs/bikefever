@@ -1,18 +1,38 @@
-import { mdsvex } from "mdsvex";
-import adapter from "@sveltejs/adapter-vercel";
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import adapter from '@sveltejs/adapter-vercel';
+import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-    // Consult https://svelte.dev/docs/kit/integrations
-    // for more information about preprocessors
-    preprocess: [vitePreprocess(), mdsvex()],
+	preprocess: [
+		vitePreprocess(),
+	],
+	kit: {
+		adapter: adapter(),
+		alias: {
+			$routes: path.resolve('./src/routes'),
+			$lib: path.resolve('./src/lib'),
+			$src: path.resolve('./src/')
+    },
 
-    kit: {
-		adapter: adapter()
 	},
 
-    extensions: [".svelte", ".svx"]
+	// plugin options
+  vitePlugin: {
+    exclude: []
+  }, 
+	// vite: {
+	// 	build: {
+	// 		sourcemap: false
+	// 	},
+	// 	css: {
+	// 		devSourcemap: false
+	// 	},
+	// 	esbuild: {
+	// 		sourcemap: false
+	// 	}
+	// }
+
 };
 
 export default config;
