@@ -1,14 +1,13 @@
 [
-	{ 
+	{
 		"name": "Bike Fever's Substack",
 		"url": "https://bikefeverstories.substack.com/feed"
-	},	
+	},
 	{ "name": "Genoa Arts", "url": "http://zacusca-backend.bnqt.autos/feed/465fc560-f48a-4344-87e0-e6d8af54550a/rss" },
 	{ "name": "Genoa Food", "url": "http://zacusca-backend.bnqt.autos/feed/7c2a6615-d957-49b3-8fbd-d636259a56d1/rss" },
 	{ "name": "Genoa Arts", "url": "http://zacusca-backend.bnqt.autos/feed/465fc560-f48a-4344-87e0-e6d8af54550a/rss" },
 	{ "name": "Genoa History", "url": "http://zacusca-backend.bnqt.autos/feed/b0fc628e-07b4-4321-bd0e-f9c77d7a6d38/rss" },
-	{ "name": "Genoa Events", "url": "http://zacusca-backend.bnqt.autos/feed/eceb8d8e-d7a0-462f-bd03-c48592270ec1/rss" },
-	{ "name": "Genoa Non-Tourist", "url": "http://zacusca-backend.bnqt.autos/feed/eaef6560-b52f-4235-bf32-ae3cbe7062db/rss" },
+	{ "name": "Genoa Events", "url": "http://zacusca-backend.bnqt.autos/feed/eceb8d8e-d7a0-462f-bd03-c48592270ec1/rss" },	
 	{ "name": "Genoa Activities", "url": "http://zacusca-backend.bnqt.autos/feed/803fe4b3-c6f9-4e10-aec9-974c082d855d/rss" },
 	{ "name": "Genoa Everything", "url": "http://zacusca-backend.bnqt.autos/feed/22a6979e-c0ef-44f6-aac9-5a07f7bb6810/rss" },
 	{ "name": "The Inner Ring", "url": "https://feeds.feedburner.com/inrng/i" },
